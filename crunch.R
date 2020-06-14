@@ -50,12 +50,10 @@ for (ticker_name in tickers){
   accuracies = c(accuracies, accdrift, accholt, accarima)
 
   ##
-  print(paste('done with', ticker_name))
+  print(paste('Done with', ticker_name))
 
 }
 
 write.table(matrix(accuracies, ncol=3, byrow=T), col.names=c('DRIFT', 'HOLT', 'ARIMA'), row.names=as.character(tickers),
           file='data/accuracies.csv', sep=',')
 
-
-# autoplot(window(ticker, length(ticker)-30)) + autolayer(olddrift$mean) + autolayer(oldholt$mean) + autolayer(forecast(oldarima, 7)$mean)

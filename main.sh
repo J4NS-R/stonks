@@ -31,9 +31,13 @@ python3 locket.py get_acc_stats > data/accuracy_stats.csv
 echo "Crunching historical accuracies"
 R --no-save < accstats.R
 
+echo "Deploying artifacts"
+mv graphs/accuracies.jpg /var/www/athena.rauten.co.za/html/stonks/
+mv graphs/*.jpg /var/www/athena.rauten.co.za/html/stonks/graphs/
+
 echo "Cleaning up"
 rm tickers.txt
 rm -r data/
+rmdir graphs
 
-# todo move to appropriate places
 echo "Done!"

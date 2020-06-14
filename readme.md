@@ -1,18 +1,19 @@
 # Stonks
 
-Does some number crunching to predict stocks. 
+A bunch of scripts that process stock market data and makes forecasts 
+using popular statistical time series forecasting methods. 
+
+Proof that I studied and passed university-level statistics (:
 
 ## Design
 
 Every week:
 - Stock data downloaded and cleaned - 3 months
-- R calculates 1w forecast and plots it
+- R calculates 1w forecast for each ticker and plots it
 - R calcs previous model and gets accuracy, given latest observations.
-- Accuracy is stored.
-
-When site viewed:
-- Display plot/s
-- Display avg accuracy
+- This accuracy data is then stored.
+- Historical prediction accuracy is loaded from db and plotted.
+- All graphs are published to [the website](https://athena.rauten.co.za/stonks).
 
 ## Dependencies
 
@@ -20,7 +21,9 @@ When site viewed:
   - ggplot2
   - forecast
   - fpp2
+- python3
+  - mysql-connector-python
 
 ## Attribution
 
-<a href="https://iexcloud.io">Data provided by IEX Cloud</a>
+[Stock market data provided by IEX Cloud](https://iexcloud.io)
