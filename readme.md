@@ -3,7 +3,7 @@
 A bunch of scripts that process stock market data and makes forecasts 
 using popular statistical time series forecasting methods. 
 
-Proof that I studied and passed university-level statistics (:
+Proof that I passed university-level statistics (:
 
 ## Design
 
@@ -13,7 +13,7 @@ Every week:
 - R calcs previous model and gets accuracy, given latest observations.
 - This accuracy data is then stored.
 - Historical prediction accuracy is loaded from db and plotted.
-- All graphs are published to [the website](https://athena.rauten.co.za/stonks).
+- All graphs are published to [the website](https://stonks.singularity.net.za).
 
 ## Dependencies
 

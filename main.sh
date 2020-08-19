@@ -12,11 +12,12 @@ base_url="https://cloud.iexapis.com/v1/stock"
 # required for self and cruncher
 python3 locket.py get_tickers > tickers.txt
 
-token=$(cat token.txt)
+# load secrets
+source secrets.sh
 
 echo "Retrieving stock data"
 while read -r ticker; do
-  curl -X GET "$base_url/$ticker/chart/3m?format=csv&token=$token" > "data/${ticker}_data.csv"
+  curl -X GET "$base_url/$ticker/chart/3m?format=csv&token=$IEX_TOKEN" > "data/${ticker}_data.csv"
 done < tickers.txt
 
 echo "Crunching data"
@@ -32,8 +33,8 @@ echo "Crunching historical accuracies"
 R --no-save < accstats.R
 
 echo "Deploying artifacts"
-mv graphs/accuracies.jpg /var/www/athena.rauten.co.za/html/stonks/
-mv graphs/*.jpg /var/www/athena.rauten.co.za/html/stonks/graphs/
+mv graphs/accuracies.jpg "$PUBLIC_DIR"/
+mv graphs/*.jpg "$PUBLIC_DIR"/graphs/
 
 echo "Cleaning up"
 rm tickers.txt
